@@ -7,4 +7,8 @@
     <File Path="Directory.Packages.props" />
     <File Path="README.md" />
   </Folder>
+  <Project Path="TimeClock.Core/TimeClock.Core.csproj" Id="499f543b-0ca3-4470-ad82-1c0027f41164" />
+  <Project Path="TimeClock.Maui/TimeClock.Maui.csproj" Id="bf88ab55-4350-42aa-becd-f0f08c5478a1">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>
