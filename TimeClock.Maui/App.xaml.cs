@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace TimeClock.Maui;
+﻿namespace TimeClock.Maui;
 
 public partial class App : Application
 {
