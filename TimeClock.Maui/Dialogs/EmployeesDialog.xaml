@@ -1,0 +1,81 @@
+<ContentPage
+  x:Class="TimeClock.Maui.Dialogs.EmployeesDialog"
+  x:DataType="viewmodels:EmployeesViewModel"
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:viewmodels="clr-namespace:TimeClock.Maui.ViewModels"
+  Title="Add Employee">
+
+  <VerticalStackLayout Padding="16">
+
+    <Label
+      Text="Add Employee"
+      FontSize="24"
+      FontAttributes="Bold"
+      Margin="0,0,0,16" />
+
+    <Label
+      Text="ID"
+      FontAttributes="Bold" />
+
+    <Entry
+      Text="{x:Binding Path=Id, Mode=TwoWay}"
+      Keyboard="Default"
+      HorizontalOptions="Start"
+      Margin="0,0,0,8"
+      WidthRequest="128" />
+
+    <Label
+      Text="First Name"
+      FontAttributes="Bold" />
+
+    <Entry
+      Text="{x:Binding Path=FirstName, Mode=TwoWay}"
+      Keyboard="Default"
+      HorizontalOptions="Start"
+      Margin="0,0,0,8"
+      WidthRequest="256" />
+
+    <Label
+      Text="Last Name"
+      FontAttributes="Bold" />
+
+    <Entry
+      Text="{x:Binding Path=LastName, Mode=TwoWay}"
+      Keyboard="Default"
+      HorizontalOptions="Start"
+      Margin="0,0,0,8"
+      WidthRequest="256" />
+
+    <Label
+      Text="Notes"
+      FontAttributes="Bold" />
+
+    <Editor
+      Text="{x:Binding Path=Notes, Mode=TwoWay}"
+      Keyboard="Default"
+      HorizontalOptions="Start"
+      Margin="0,0,0,8"
+      AutoSize="Disabled"
+      HeightRequest="256"
+      WidthRequest="512" />
+
+    <HorizontalStackLayout>
+
+      <Button
+        Text="Close"
+        Margin="4"
+        WidthRequest="128"
+        Command="{x:Binding Path=BackCommand, Mode=OneTime}" />
+
+      <Button
+        Text="Save"
+        Margin="4"
+        WidthRequest="128"
+        Command="{x:Binding Path=SaveCommand, Mode=OneTime}" />
+
+    </HorizontalStackLayout>
+
+  </VerticalStackLayout>
+
+</ContentPage>

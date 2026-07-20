@@ -4,12 +4,20 @@ namespace TimeClock.Maui.Views;
 
 public partial class EmployeesPage : ContentPage
 {
-    public EmployeesViewModel ViewModel { get; }
+    private readonly EmployeesViewModel _viewModel;
 
     public EmployeesPage(EmployeesViewModel viewModel)
 	{
 		InitializeComponent();
 
-        ViewModel = viewModel;
+        _viewModel = viewModel;
+        BindingContext = viewModel;
+
+        viewModel.Navigation = Navigation;
 	}
+
+    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        await _viewModel.RefreshCommand.ExecuteAsync(null);
+    }
 }

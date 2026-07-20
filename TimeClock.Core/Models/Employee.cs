@@ -4,7 +4,7 @@ public record Employee(
     string Id,
     string FirstName,
     string LastName,
-    string Notes)
+    string Notes) : Model(Id)
 {
     public string FullName => $"{FirstName} {LastName}";
 

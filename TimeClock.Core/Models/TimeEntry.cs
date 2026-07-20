@@ -5,7 +5,7 @@ public record TimeEntry(
     Employee? Employee,
     DateTime? InTimestamp,
     DateTime? OutTimestamp,
-    string Notes)
+    string Notes) : Model(Id)
 {
     public override string ToString()
     {
