@@ -1,9 +1,20 @@
 <ContentPage
   x:Class="TimeClock.Maui.Views.SettingsPage"
+  x:DataType="viewmodels:SettingsViewModel"
   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   xmlns:viewmodels="clr-namespace:TimeClock.Maui.ViewModels"
-  x:DataType="viewmodels:SettingsViewModel"
   Title="Settings">
+
+  <VerticalStackLayout>
+
+    <Button
+      Text="Reset Data"
+      Margin="4"
+      WidthRequest="128"
+      HorizontalOptions="Start"
+      Command="{x:Binding Path=ResetDataCommand, Mode=OneTime}" />
+
+  </VerticalStackLayout>
 
 </ContentPage>

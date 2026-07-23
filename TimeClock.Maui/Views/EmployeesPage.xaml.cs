@@ -13,8 +13,9 @@ public partial class EmployeesPage : ContentPage
         _viewModel = viewModel;
         BindingContext = viewModel;
 
+        viewModel.Page = this;
         viewModel.Navigation = Navigation;
-	}
+    }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {

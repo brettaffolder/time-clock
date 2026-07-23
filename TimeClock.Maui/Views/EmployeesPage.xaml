@@ -7,9 +7,13 @@
   xmlns:viewmodels="clr-namespace:TimeClock.Maui.ViewModels"
   Title="Employees">
 
-  <VerticalStackLayout Padding="16">
+  <Grid
+    RowDefinitions="auto,1*"
+    Padding="16">
 
-    <HorizontalStackLayout HorizontalOptions="End">
+    <HorizontalStackLayout
+      Grid.Row="0"
+      HorizontalOptions="End">
 
       <Button
         Text="Add"
@@ -25,7 +29,9 @@
 
     </HorizontalStackLayout>
 
-    <CollectionView ItemsSource="{x:Binding Path=Employees, Mode=OneTime}">
+    <CollectionView
+      Grid.Row="1"
+      ItemsSource="{x:Binding Path=Employees, Mode=OneTime}">
 
       <CollectionView.Header>
         <Grid ColumnDefinitions="128, 256, 1*">
@@ -76,6 +82,6 @@
 
     </CollectionView>
 
-  </VerticalStackLayout>
+  </Grid>
 
 </ContentPage>

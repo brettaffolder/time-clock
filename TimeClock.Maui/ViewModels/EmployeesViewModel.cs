@@ -15,6 +15,7 @@ public partial class EmployeesViewModel(IEmployeeService employee) : ObservableO
 {
     private readonly IEmployeeService _employee = employee;
 
+    public Page? Page { get; set; }
     public INavigation? Navigation { get; set; }
 
     [ObservableProperty]
@@ -40,6 +41,11 @@ public partial class EmployeesViewModel(IEmployeeService employee) : ObservableO
         Result<IEnumerable<Employee>> result = await _employee.AllAsync();
         if (result.IsError || result.Value is null)
         {
+            if (Page is not null)
+            {
+                await Page.DisplayAlertAsync("Error", result.Error?.Message, "Close");
+            }
+
             return;
         }
 
@@ -73,7 +79,16 @@ public partial class EmployeesViewModel(IEmployeeService employee) : ObservableO
             LastName.Trim(),
             Notes.Trim());
 
-        await _employee.AddAsync(employee);
+        Result result = await _employee.AddAsync(employee);
+        if (result.IsError)
+        {
+            if (Page is not null)
+            {
+                await Page.DisplayAlertAsync("Error", result.Error?.Message, "Close");
+            }
+
+            return;
+        }
 
         Employees.Add(employee);
 
