@@ -20,44 +20,63 @@
 
     <CollectionView
       Grid.Row="1"
+      Margin="8"
       ItemsSource="{x:Binding TimeClocks, Mode=OneTime}">
 
       <CollectionView.ItemsLayout>
-        <GridItemsLayout Orientation="Vertical" Span="3"
-VerticalItemSpacing="10"
-HorizontalItemSpacing="10" />
+        
+        <GridItemsLayout
+          Orientation="Horizontal"
+          VerticalItemSpacing="8"
+          HorizontalItemSpacing="8" />
+        
       </CollectionView.ItemsLayout>
 
       <CollectionView.ItemTemplate>
         <DataTemplate x:DataType="dataobjects:TimeClock">
 
-          <Grid
+          <Border
+            StrokeShape="RoundRectangle 8,8,8,8"
             WidthRequest="256"
             HeightRequest="256"
-            ColumnDefinitions="1*,1*"
-            RowDefinitions="1*,auto" Background="LightBlue">
+            BackgroundColor="{AppThemeBinding Dark=#333333, Light=#EEEEEE}">
 
-            <Label
-              Text="{Binding Employee.FullName}"
-              Grid.Column="0"
-              Grid.Row="0"
-              Grid.ColumnSpan="2" />
+            <Grid
+              ColumnDefinitions="1*,1*"
+              RowDefinitions="1*,auto">
 
-            <Button
-              Grid.Column="0"
-              Grid.Row="1"
-              HorizontalOptions="Fill"
-              Text="Clock In"
-              Command="{Binding ClockInCommand}" />
+              <Label
+                Margin="4"
+                Text="{Binding Employee.FullName}"
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                FontSize="48"
+                FontAttributes="Bold" />
 
-            <Button
-              Grid.Column="1"
-              Grid.Row="1"
-              HorizontalOptions="Fill"
-              Text="Clock Out"
-              Command="{Binding ClockOutCommand}" />
+              <Button
+                Margin="4"
+                Grid.Column="0"
+                Grid.Row="1"
+                HorizontalOptions="Fill"
+                Text="Clock In"
+                HeightRequest="64"
+                BackgroundColor="LightGreen"
+                Command="{Binding ClockInCommand}" />
 
-          </Grid>
+              <Button
+                Margin="4"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalOptions="Fill"
+                Text="Clock Out"
+                HeightRequest="64"
+                BackgroundColor="LightCoral"
+                Command="{Binding ClockOutCommand}" />
+
+            </Grid>
+
+          </Border>
 
         </DataTemplate>
       </CollectionView.ItemTemplate>

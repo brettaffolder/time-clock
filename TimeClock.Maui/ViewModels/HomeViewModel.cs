@@ -51,11 +51,11 @@ public partial class HomeViewModel(
             return;
         }
 
-        foreach (Employee employee in employeesResult.Value)
+        foreach (Employee employee in employeesResult.Value.OrderBy(e => e.LastName).ThenBy(e => e.FirstName))
         {
             IEnumerable<TimeEntry> timeEntries = timeEntriesResult.Value.Where(t => t.Employee?.Id == employee.Id);
 
-            TimeClocks.Add(new DataObjects.TimeClock(_employee, _timeEntry, employee, [.. timeEntries]));
+            TimeClocks.Add(new DataObjects.TimeClock(this, _employee, _timeEntry, employee, [.. timeEntries]));
         }
     }
 }

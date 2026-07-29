@@ -1,15 +1,20 @@
 ﻿namespace TimeClock.Core.Models;
 
-public record Employee(
-    string Id,
-    string FirstName,
-    string LastName,
-    string Notes) : Model(Id)
+public record Employee : Model
 {
-    public string FullName => $"{FirstName} {LastName}";
+    public Employee() : base(string.Empty) { }
 
-    public override string ToString()
+    public Employee(string id, string firstName, string lastName, string notes) : base(id)
     {
-        return FullName;
+        Id = id;
+        FirstName = firstName;
+        LastName = lastName;
+        Notes = notes;
     }
+
+    public string FirstName { get; init; } = string.Empty;
+    public string LastName { get; init; } = string.Empty;
+    public string Notes { get; init; } = string.Empty;
+
+    public string FullName => $"{FirstName} {LastName}";
 }

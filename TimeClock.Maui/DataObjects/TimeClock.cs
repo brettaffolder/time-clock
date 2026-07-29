@@ -5,15 +5,18 @@ using CommunityToolkit.Mvvm.Input;
 
 using TimeClock.Core.Models;
 using TimeClock.Maui.Contracts;
+using TimeClock.Maui.ViewModels;
 
 namespace TimeClock.Maui.DataObjects;
 
 public partial class TimeClock(
+    HomeViewModel viewModel,
     IEmployeeService employeeService,
     ITimeEntryService timeEntryService,
     Employee employee,
     List<TimeEntry> timeEntries) : ObservableObject
 {
+    private readonly HomeViewModel _viewModel = viewModel;
     private readonly IEmployeeService _employee = employeeService;
     private readonly ITimeEntryService _timeEntry = timeEntryService;
 
@@ -44,6 +47,8 @@ public partial class TimeClock(
         _ = await _timeEntry.AddAsync(timeEntry);
 
         TimeEntries.Add(timeEntry);
+
+        await _viewModel.RefreshCommand.ExecuteAsync(null);
     }
 
     [RelayCommand(CanExecute = nameof(CanClockOut))]
@@ -58,5 +63,7 @@ public partial class TimeClock(
 
         TimeEntries.Remove(timeEntry);
         TimeEntries.Add(edit);
+
+        await _viewModel.RefreshCommand.ExecuteAsync(null);
     }
 }

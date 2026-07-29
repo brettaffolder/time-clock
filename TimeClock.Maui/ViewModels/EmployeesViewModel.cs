@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 using TimeClock.Core;
+using TimeClock.Core.Helpers;
 using TimeClock.Core.Models;
 using TimeClock.Maui.Contracts;
 using TimeClock.Maui.Dialogs;
@@ -36,6 +37,13 @@ public partial class EmployeesViewModel(IEmployeeService employee) : ObservableO
     [RelayCommand]
     private async Task Refresh()
     {
+        //var faker = FakeEmployeeHelper.CreateFaker();
+        //var emp = faker.Generate(100);
+        //foreach (var i in emp)
+        //{
+        //    await _employee.AddAsync(i);
+        //}
+
         Employees.Clear();
 
         Result<IEnumerable<Employee>> result = await _employee.AllAsync();
